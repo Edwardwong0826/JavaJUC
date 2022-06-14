@@ -1,4 +1,4 @@
-package com.wong;
+package com.wong.multithread;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

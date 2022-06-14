@@ -1,22 +1,28 @@
-package com.wong;
+package com.wong.multithread;
 
 import java.util.concurrent.TimeUnit;
 
-public class Daemon {
+public class Daemon
+{
 
-    public static void main(String[] args) {
-        Thread thread = new Thread(() ->{
+    public static void main(String[] args)
+    {
+        Thread thread = new Thread(() ->
+        {
             System.out.println(Thread.currentThread().getName() + " " +Thread.currentThread().isDaemon());
-            while(true){
+            while(true)
+            {
 
             }
         }, "t1");
         thread.setDaemon(true);
         thread.start();
 
-        try{
+        try
+        {
             TimeUnit.SECONDS.sleep(1);
-        }catch (InterruptedException e){
+        }catch
+        (InterruptedException e){
             e.printStackTrace();
         }
 
