@@ -1,4 +1,4 @@
-package com.wong.locksupport;
+package com.wong.interrupt;
 
 public class InterruptDemo4 {
     public static void main(String[] args) {

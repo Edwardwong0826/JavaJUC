@@ -1,4 +1,4 @@
-package com.wong.locksupport;
+package com.wong.interrupt;
 
 import java.util.concurrent.TimeUnit;
 
