@@ -6,6 +6,8 @@ public class VolatileSeeDemo {
 
     // every thread will have its own working memory, by using volatile, it can ensure main memory value is refresh and notify others thread
     // volatile ensure other threads read from this memory and know the changes and get the latest value
+    // when generate machine code from byte code, if notice got volatile ACC_VOLATILE flag,
+    // it will add memory barrier according JMM spec
     static volatile boolean flag = true;
 
     public static void main(String[] args) {
