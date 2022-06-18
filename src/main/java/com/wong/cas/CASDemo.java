@@ -1,4 +1,4 @@
-package com.wong.juc;
+package com.wong.cas;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
