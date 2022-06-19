@@ -20,5 +20,13 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+        <!--
+            allow VM inspect object layout internal information
+        -->
+       <dependency>
+           <groupId>org.openjdk.jol</groupId>
+           <artifactId>jol-core</artifactId>
+           <version>0.9</version>
+       </dependency>
+   </dependencies>
 </project>
