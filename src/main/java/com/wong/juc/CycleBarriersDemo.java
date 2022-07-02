@@ -7,6 +7,11 @@ import java.util.concurrent.Executors;
 
 public class CycleBarriersDemo {
 
+    // CyclicBarrieres
+    // CyclicBarrier can enforce all the thread at certain point to wait and must wait all
+    // thread finish execute the task and release the barrier before continue next execution
+    // can be reuse and reset, if the barrier is broken(thread is interrupted), the rest of thread cannot use barrier anymore, need to reset new barrier
+    // its implementation maintain a Reentrantlock(implemented by using AQS) and Condition(to signal other thread to awake)
     public static void main(String[] args) {
         CyclicBarriers();
     }
@@ -33,8 +38,6 @@ public class CycleBarriersDemo {
     public void performTask(CyclicBarrier c1, CyclicBarrier c2)
     {
 
-        // CyclicBarrier can enforce all the thread at certain point to wait and must wait all
-        // thread finish to release the barrier before continue next execution
 
         try
         {
