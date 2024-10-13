@@ -44,11 +44,17 @@ class MyResource
 {
     Map<String, String> map = new HashMap<>();
 
-    //ReentrantLock kind like synchronized
+    // ReentrantLock kind like synchronized both are re-entrant locks
+    // also called recursive locks (可重入锁 也叫递归锁), mean that a thread can acquire its own internal lock again.
+    // For example, if a thread acquires a lock on an object, and the object lock is not released yet
+    // If it's a non-reentrant lock, it will cause a deadlock.
     ReentrantLock lock = new ReentrantLock();
 
-    // ReentrantReadWriteLock is read write mutual exclusion, read read share
+    // ReentrantLock lock is read write mutual exclusion, write write mutualex clusion ,read read also mutualex eclusion
+    // ReentrantReadWriteLock is read write mutual exclusion, write write mutualexclusion ,read read share
+    // it got two locks, one is read lock and one is write lock, only read lock was sharing lock, write lock was exclusive lock
     // it allows multi read thread to read the resource
+    // use in write > read scneario then can increase system performance
     // but got two problem
     // 1. write lock straving problem
     // 2. lock downgrade
