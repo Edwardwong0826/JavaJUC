@@ -60,7 +60,7 @@ public class SynchronizedUpdateDemo {
     }
 
     // use jvm command disabled bias lock to directly enter lightweight lock
-    // after java 6, it will use Adaptive Spinning lock, the spin times might reference according result of last successful spin times
+    // after java 6, it will use Adaptive Spinning lock 适应性自旋锁, the spin times might reference according result of last successful spin times
     // if less spin success, next times will reduce spin times or don't spin at all avoid CPU resources
     public static void lightweightLock()
     {
@@ -76,7 +76,7 @@ public class SynchronizedUpdateDemo {
      * java -XX:+PrintFlagsInitial |grep BiasedLock* - check in linus bias lock parameter settings
      * -XX:+UseBiasedLocking - enable bias lock
      * -XX:BiasedLockingStartupDelay=0 - set bias lock start up delay time, default JVM delay 4 seconds
-     * -XX:-UseBiasedLocking - if close biased lock, program will directly go to lightweight lock
+     * -XX:-UseBiasedLocking - if close biased lock, program will directly go to lightweight lock 轻量级锁
      */
     public static void biasLock()
     {

@@ -3,6 +3,33 @@ package com.wong.multithread;
 import java.util.concurrent.TimeUnit;
 class Phone
 {
+
+    /**
+     * How to use synchronized
+     * 1. Use in instance method
+     *  synchronized void method() {
+     *      //业务代码
+     *  }
+     *
+     * 2. Use in static method
+     *
+     *  synchronized static void method() {
+     *      //业务代码
+     *  }
+     *
+     * 3. Use in code block {}
+     *  synchronized(object) - means before enter the synchronisation code base need to acquire this given object lock
+     *  synchronized(class) -  means before enter the synchronisation code base need to acquire this given class lock
+     *
+     *  synchronized(this) {
+     *     //业务代码
+     *  }
+     *
+     */
+
+    // The synchronized keyword, when added to static methods and synchronized(class) blocks, locks the class;
+    // The synchronized keyword added to an instance method locks the object instance;
+
     public static synchronized void sendEmail()
     {
         try
@@ -47,7 +74,7 @@ class Phone
 
         synchronized(this)
         {
-            System.out.println(Thread.currentThread().getName() + " do long time task");
+            System.out.println(Thread.currentThread().getName() + " do second time task");
         }
 
         System.out.println(Thread.currentThread().getName() + " finish");
@@ -74,7 +101,7 @@ class Phone
  *   note
  *   Question 1-2
  *      一个对象里面如果有对个synchronized方法, at certain time,只要有一个 thread调用其中一个synchronized方法了
- *      other threads only can wait, other words, 只能一唯一的thread去访问这些synchronized方法
+ *      other threads only can wait, other words, 只能有唯一的thread去访问这些synchronized方法
  *      锁的是当前对象this（对象锁）, 锁定后, 其他thread都不能进入当前对象的其他的synchronized方法
  *   Question 3-4
  *      一个a线程调用synchronized方法拿了锁,另外一个b调用普通方法，普通方法没有锁，所以b可以直接用，
@@ -96,6 +123,9 @@ class Phone
  */
 public class EightLockTest
 {
+
+    // https://zhuanlan.zhihu.com/p/39896563 高性能，高并发概念：排队和各种锁
+    // https://zhuanlan.zhihu.com/p/40791268 Java concurrent原理
     public static void main(String[] args)
     {
         Phone phone = new Phone();
@@ -115,7 +145,7 @@ public class EightLockTest
 //        }
 
         new Thread(()->{
-            phone.doLongTimeTask();
+            phone.doSecondTimeTask();
             //phone.hello();
             //phone2.sendSMS();
         }, "b").start();

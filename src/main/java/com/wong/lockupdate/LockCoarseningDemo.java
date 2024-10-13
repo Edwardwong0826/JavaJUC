@@ -2,7 +2,7 @@ package com.wong.lockupdate;
 
 /**
  * if method there is close each other same lock object, JIT compiler will merge these synchronized block,
- * by coarsening and add range, one times lock, avoid keep create abd release lock to increase performance
+ * by coarsening and add range, one times lock, avoid keep create abd release lock to increase performance - 锁粗化
  */
 public class LockCoarseningDemo {
 

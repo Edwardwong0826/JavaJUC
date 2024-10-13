@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * spin lock advantage: use CAS dont need to like thread wait and block
+ * spin lock advantage: use CAS dont need to like thread wait and block - 自旋锁
  */
 public class SpinLockDemo
 {

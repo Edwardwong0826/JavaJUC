@@ -5,11 +5,16 @@ package com.wong.lockupdate;
  * -XX:+UseBiasedLocking - enable bias lock
  * -XX:BiasedLockingStartupDelay=0 - set bias lock start up delay time
  * -XX:-UseBiasedLocking - if close biased lock, program will directly go to lightweight lock
+ *
+ *
+ *  Because biased locking - 偏向锁 adds complexity to the JVM, it also doesn't provide performance gains for all applications.
+ *  Therefore, In Java 15, bias lock was default disable but still can be enabled back using command
+ *  But in Java 18, bias lock it has been completely abandoned and unable to enabled back using command anymore
  */
 public class BiasLockDemo {
 
     // when running the code, we will notice there will one thread get the lock more often there other threads
-    // bias lock will prefer the first thread that get lock, if during next dont have other threads to ask lock
+    // bias lock will prefer the first thread that get lock, if during next do not have other threads to ask lock
     // thread that hold bias lock no need trigger synchronized, also without CAS operation
     public static void main(String[] args)
     {
@@ -31,6 +36,7 @@ class Ticket2
         {
             if(number>0)
             {
+                // we will see one thread keep getting the lock and access the resource
                 System.out.println(Thread.currentThread().getName()+" sale "+(number--)+" left "+number);
 
             }

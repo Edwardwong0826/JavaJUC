@@ -3,7 +3,7 @@ package com.wong.lockupdate;
 
 /**
  * this lock object never shared to other lock to use
- * there is no machine code for this lock object, thus remove the use of lock
+ * there is no machine code for this lock object, thus remove the use of lock - 锁消除
  */
 public class LockClearUpDemo {
 
