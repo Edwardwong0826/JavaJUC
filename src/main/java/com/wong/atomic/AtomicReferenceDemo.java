@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+// If we need to update multiple variables atomically, we can use reference atomic classes.
+// AtomicReference class can achieve atomicity between referenced object
+// By encapsulating multiple variables in a single object, we can use AtomicReference to perform CAS operations.
 public class AtomicReferenceDemo {
 
 
