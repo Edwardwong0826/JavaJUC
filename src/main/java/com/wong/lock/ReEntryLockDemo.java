@@ -5,10 +5,24 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ReEntryLockDemo
 {
+    // ReentrantLock kind of like synchronized both are re-entrant locks
+    // also called recursive locks (可重入锁 也叫递归锁), mean that a thread can acquire its own internal lock again.
+    // For example, if a thread acquires a lock on an object, and the object lock is not released yet
+    // If it's a non-reentrant lock, it will cause a deadlock.
 
+    // Another thing is ReentrantLock was interruptible lock and synchronized was non-interruptible lock
+    // Interruptible lock - During the aquire lock process can be interrrupt or stop, not necessary need to keep waiting for get the lock only able to process other thing
+    // Non-Interruptible lock - Once the thread start acquire the lock, need to wait unitl get the lock only able to process other thing
+
+    // It has 3 main point
+    // 1. Waiting for interruptible - A mechanism is provided to be able to interrupt a thread waiting for a lock, via lock.lockInterruptibly().
+    //                                This means that a waiting thread can choose to quit waiting and do something else instead.
+    // 2. Fair locking is possible - can choose fair sync or non-fair sync, reentrantLock default was non-fair sync,
+    // 3. can selective notification (locks can be bound to multiple conditions) - need to depend on conidtion interface and newCondition method
+    // static ReentrantLock lock = new ReentrantLock(true); // put true is fair lock, empty args and false for unfair lock
     static ReentrantLock lock = new ReentrantLock();
 
-    // reentantlock have method to estimate queue length or determine current thread is it in the AQS CHL queue
+    // Reentrantlock have method to estimate queue length or determine current thread is it in the AQS CHL queue
     // getQueueLength()
     // hasQueuedThread()
     public static void main(String[] args)

@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 class Ticket
 {
     private int number = 50;
-    ReentrantLock lock = new ReentrantLock(true); // put true is fair lock, empty args and    false unfair lock
+    ReentrantLock lock = new ReentrantLock(true); // put true is fair lock, empty args and false for unfair lock
 
     public void sale()
     {
