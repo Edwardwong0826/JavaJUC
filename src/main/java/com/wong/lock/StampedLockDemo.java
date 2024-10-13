@@ -5,6 +5,19 @@ import java.util.concurrent.locks.StampedLock;
 
 public class StampedLockDemo
 {
+    // When in write > read scneario can also consider to use stamped lock as the replacement for ReentrantReadWriteLock
+    // But it was non-rentry lock, does not support for condition, and not so good on iterrupt operation support
+    // if we want to use above features, then not recommend to use stamped lock
+
+    // One thing stamped lock was not implemented Lock interface or ReadWriteLock interface but based on CLH lock (AQS also based on this)
+    // CLH locks are a modification of spin locks.
+
+    // Stampled lock got 3 mode of read/write control
+    // 1. Write lock - exclusive lock than can only obatain by one thread, other request for read and write lock must wait and this lock was non-rentry
+    // 2. Read lock - when that is no other thread obtain the write lock, multiple threads are allow to share the read lock, but once get thread obtain the write lock
+    //                other threads requests to acquire this lock will be blocked, and this read lock was non-rentry
+    // 3. Optimistic read - allow multiple threads obtain optimistic read and read lock, and at the same time only allow one thread have write lock
+
     static int number = 37;
     static StampedLock stampedLock = new StampedLock();
 
